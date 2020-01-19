@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>정규표현식</h1>
+    <h2>정규표현식 리터럴</h2>
+    <script>
+        var pattern = /a/;
+    </script>
+    <h2>정규표현식 객체 생성자</h2>
+    <script>
+        var pattern = new ReqExp('a');
+    </script>
+    <h2>정규표현식 메소드</h2>
+    <script>
+        document.write(pattern.exec('abcde'));
+        document.write("<br>");
+        document.write(pattern.exec('bcdef'));
+        document.write("<br>");
+        document.write(pattern.test('abcde'));
+        document.write("<br>");
+        document.write(pattern.test('bcdef'));
+        document.write("<br>");
+    </script>
+    <h2>문자열 메소드</h2>
+    <script>
+        document.write('abcde'.match(pattern));
+        document.write("<br>");
+        document.write('bcdef'.match(pattern));
+        document.write("<br>");
+        document.write('abcde'.replace(pattern, 'A'));
+        document.write("<br>");
+    </script>
+    <h2>옵션</h2>
+    <script>
+        var xi = /a/;
+        document.write("Abcde".match(xi)); // null
+        document.write("<br>");
+        var oi = /a/i;
+        document.write("Abcde".match(oi)); // ["A"];
+        document.write("<br>");
+        var xg = /a/;
+        document.write("abcdea".match(xg));
+        document.write("<br>");
+        var og = /a/g;
+        document.write("abcdea".match(og));
+        document.write("<br>");
+    </script>
+    <h2>캡처</h2>
+    <script>
+        var pattern = /(\w+)\s(\w+)/;
+        var str = "coding everybody";
+        var result = str.replace(pattern, "$2, $1");
+        document.write(result);
+    </script>
+    <h2>치환</h2>
+    <script>
+        var urlPattern = /\b(?:https?):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*/gim;
+        var content = '생활코딩 : http://opentutorials.org/course/1 입니다. 네이버 : http://naver.com 입니다. ';
+        var result = content.replace(urlPattern, function (url) {
+            return '<a href="' + url + '">' + url + '</a>';
+        });
+        document.write(result);
+    </script>
+</body>
+
+</html>
