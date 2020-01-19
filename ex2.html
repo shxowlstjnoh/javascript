@@ -10,10 +10,27 @@
     <script>
         var id = prompt('아이디를 입력하세요.');
         var password = prompt('비밀번호를 입력해주세요');
-        if (id === 'shxowlstjnoh' && password === '111111') {
+        if (id === 'shxowlstjnoh' && password === '11') {
             alert('로그인 하셨습니다. ' + id + '님 반갑습니다.');
         } else {
             alert('아이디가 일치하지 않습니다.');
+        }
+
+        if (!'') {
+            document.write('빈 문자열<br>')
+        }
+        if (!undefined) {
+            document.write('undefined<br>');
+        }
+        var a;
+        if (!a) {
+            document.write('값이 할당되지 않은 변수<br>');
+        }
+        if (!null) {
+            document.write('null<br>');
+        }
+        if (!NaN) {
+            document.write('NaN<br>');
         }
     </script>
 </body>
