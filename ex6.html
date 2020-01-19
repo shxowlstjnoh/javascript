@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>객체</h1>
+    <h2>객체의 생성</h2>
+    <script>
+        var grades = {
+            'egoing': 10,
+            'k8805': 6,
+            'sorialgi': 80
+        };
+
+        var grades = {};
+        grades['egoing'] = 10;
+        grades['k8805'] = 6;
+        grades['sorialgi'] = 80;
+
+        var grades = new Object();
+        grades['egoing'] = 10;
+        grades['k8805'] = 6;
+        grades['sorialgi'] = 80;
+
+        document.write(grades['k8805'] + "<br>");
+        document.write(grades['sori' + 'algi'] + "<br>");
+        document.write(grades.egoing);
+    </script>
+    <h2>객체와 반복문</h2>
+    <ul>
+        <script>
+            for (var key in grades) {
+                document.write("<li> key: " + key + " value: " + grades[key] + "</li>");
+            }
+        </script>
+    </ul>
+    <h2>객체지향 프로그래밍</h2>
+    <script>
+        var grades = {
+            'list' : {'egoing': 10, 'k8805': 6 },
+            'show' : function() {
+                document.write('Hello world<br>');
+            },
+            'showlist' : function() {
+                for(var name in this.list) {
+                    console.log(name, this.list[name]);
+                }
+            }
+        };
+        document.write(grades['list']['egoing'] + "<br>");
+        grades['show']()
+        grades.show();
+    </script>
+</body>
+
+</html>
