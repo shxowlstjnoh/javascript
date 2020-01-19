@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>배열</h1>
+    <h2>배열과 반복문</h2>
+    <script>
+        function get_members() {
+            return ['egoing', 'k8805', 'sorialgi'];
+        }
+        members = get_members();
+        // members.length는 배열에 담긴 값의 숫자를 알려준다. 
+        for (i = 0; i < members.length; i++) {
+            // members[i].toUpperCase()는 members[i]에 담긴 문자를 대문자로 변환해준다.
+            document.write(members[i].toUpperCase() + "<br>");
+        }
+    </script>
+    <h2>배열의 제어</h2>
+    <h3>추가</h3>
+    <script>
+        var li = ['a', 'b', 'c', 'd', 'e'];
+        document.write(li);
+        document.write('<br>');
+        li.push('f');
+        document.write(li);
+        document.write('<br>');
+    </script>
+    <h3>복수의 원소 추가</h3>
+    <script>
+        // 복수의 원소 추가
+        li = li.concat(['f', 'g']);
+        document.write(li);
+        document.write('<br>');
+    </script>
+    <h3>배열 앞쪽에 삽입</h3>
+    <script>
+        // 배열 앞쪽에 삽입
+        li.unshift('z');
+        document.write(li);
+        document.write('<br>');
+    </script>
+    <h3>특정 구간에 제거 및 추가</h3>
+    <script>
+        // 특정 구간에 제거 및 추가
+        li.splice(1, 3, 'x', 'y');
+        document.write(li);
+    </script>
+    <h3>앞에 있는 데이터 제거</h3>
+    <script>
+        li = ['a', 'b', 'c', 'd', 'e'];
+        document.write(li);
+        document.write('<br>');
+        li.shift();
+        document.write(li);
+        document.write('<br>');
+        </script>
+    <h3>뒤에 있는 데이터 제거</h3>
+    <script>
+        li = ['a', 'b', 'c', 'd', 'e'];
+        document.write(li);
+        document.write('<br>');
+        li.pop();
+        document.write(li);
+        document.write('<br>');
+    </script>
+    <h3>정렬</h3>
+    <script>
+        li = ['c', 'e', 'a', 'b', 'd'];
+        document.write(li);
+        document.write('<br>');
+        li.sort();
+        document.write(li);
+        document.write('<br>');
+        </script>
+    <h3>역순 정렬</h3>
+    <script>
+        li = ['c', 'e', 'a', 'b', 'd'];
+        document.write(li);
+        document.write('<br>');
+        li.reverse();
+        document.write(li);
+        document.write('<br>');
+    
+    </script>
+</body>
+
+</html>
