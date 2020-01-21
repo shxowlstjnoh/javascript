@@ -8,15 +8,15 @@
 
 <body>
     <h1>정규표현식</h1>
-    <h2>정규표현식 리터럴</h2>
+    <h2>컴파일 - 정규표현식 리터럴</h2>
     <script>
         var pattern = /a/;
     </script>
-    <h2>정규표현식 객체 생성자</h2>
+    <h2>컴파일 - 정규표현식 객체 생성자</h2>
     <script>
         var pattern = new ReqExp('a');
     </script>
-    <h2>정규표현식 메소드</h2>
+    <h2>실행 - 정규표현식 메소드</h2>
     <script>
         document.write(pattern.exec('abcde'));
         document.write("<br>");
@@ -27,7 +27,7 @@
         document.write(pattern.test('bcdef'));
         document.write("<br>");
     </script>
-    <h2>문자열 메소드</h2>
+    <h2>실행 - 문자열 메소드</h2>
     <script>
         document.write('abcde'.match(pattern));
         document.write("<br>");

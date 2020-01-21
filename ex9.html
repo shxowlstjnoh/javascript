@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>유효범위</h1>
+
+    <h2>전역변수와 지역변수</h2>
+    <script>
+        var vscope = 'global';
+
+        function fscope() {
+            var vscope = 'local';
+            alert(vscope);
+        }
+        fscope();
+        alert(vscope);
+    </script>
+    <h2>유효범위의 효용</h2>
+    <script>
+        function a() {
+            i = 0;
+        }
+        for (var i = 0; i < 5; i++) { // i는 전역변수이다.
+            //    a(); // 무한루프 발생
+            document.write(i);
+        }
+    </script>
+    <h2>전역변수를 사용하는 법</h2>
+    <script>
+        var MYAPP = {};
+        MYAPP.calculator = {
+            'left': null,
+            'right': null
+        };
+        MYAPP.coordinate = {
+            'left': null,
+            'right': null
+        };
+
+        MYAPP.calculator.left = 10;
+        MYAPP.calculator.right = 20;
+
+        function sum() {
+            return MYAPP.calculator.left + MYAPP.calculator.right;
+        }
+        document.write(sum() + "<br>");
+
+        // MYAPP 또한 전역변수이기 때문에 전역변수 선언을 하고 싶지 않다면
+        // 익명함수로 선언하여 지역변수로 선언해 버린다.
+        // 이런것을 모듈화 기법이라 함
+        (function () {
+            var MYAPP = {};
+            MYAPP.calculator = {
+                'left': null,
+                'right': null
+            };
+            MYAPP.coordinate = {
+                'left': null,
+                'right': null
+            };
+
+            MYAPP.calculator.left = 10;
+            MYAPP.calculator.right = 20;
+
+            function sum() {
+                return MYAPP.calculator.left + MYAPP.calculator.right;
+            }
+            document.write(sum() + "<br>");
+        }())
+    </script>
+    <h2>유효범위의 대상은 함수만! for, if안에 있는 변수는 전역으로 여김</h2>
+    <script>
+        for (var i = 0; i < 1; i++) {
+            var name = 'coding everybody';
+        }
+        document.write(name);
+    </script>
+    <h2>정적 유효 범위 - 사용될 때x, 정의될 때o</h2>
+    <script>
+        var i=5;
+        function a() {
+            var i=10;
+            b();
+        }
+        function b() {
+            document.write(i); //5 
+        }
+        a();
+    </script>
+</body>
+
+</html>
