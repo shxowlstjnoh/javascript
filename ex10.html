@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>값으로서의 함수와 콜백</h1>
+    <h2>값으로서의 함수</h2>
+    <h3> js에서 함수도 객체다. 다시 말해 일종의 값이다.
+        var a='value'처럼 변수에 담을 수 있기 때문이다.
+        다른 언어와 다른점은 함수가 값이 될 수 있다는 점이다.</h3>
+    <script>
+        function a() {} // === var a = function() {} 
+        a = {
+            b: function () {
+
+            }
+        };
+        // b는 key, 함수는 value, b는 객체안에서 변수역할을 하기 때문에 property라하고
+        // 객체의 속성 값으로 담겨진 함수를 메소드라고 한다.
+
+        // 함수는 값이라서 다른 함수의 인자로 전달 될 수 있다.
+        function cal(func, num) {
+            return func(num);
+        }
+
+        function increase(num) {
+            return num + 1;
+        }
+
+        function decrease(num) {
+            return num - 1;
+        }
+        document.write(cal(increase, 1));
+        document.write("<br>");
+        document.write(cal(decrease, 1));
+        document.write("<br>");
+    </script>
+    <h2>값으로서의 함수2</h2>
+    <h3>함수는 리턴값으로 사용할 수 있다.</h3>
+    <script>
+        function cal(mode) {
+            var funcs = {
+                'plus': function (left, right) {
+                    return left + right
+                },
+                'minus': function (left, right) {
+                    return left - right
+                }
+            }
+            return funcs[mode];
+        }
+        document.write(cal('plus')(2, 1));
+        document.write("<br>");
+        document.write(cal('minus')(2, 1));
+        document.write("<br>");
+
+        var process = [
+            function (input) {
+                return input + 10;
+            },
+            function (input) {
+                return input * input;
+            },
+            function (input) {
+                return input / 2;
+            }
+        ];
+        var input = 1;
+        for (var i = 0; i < process.length; i++) {
+            input = process[i](input);
+        }
+        document.write(input);
+        document.write("<br>");
+    </script>
+    <h2>콜백 - 처리의 위임</h2>
+    <script>
+        var numbers = [20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+        document.write(numbers.sort()); // 숫자가 1부터 시작되는 걸로 정렬됨
+        document.write("<br>");
+        var sortfunc = function (a, b) {
+            return a - b;
+        } // 콜백함수
+        document.write(numbers.sort(sortfunc)); // sort동작 방법은 콜백이라 함
+        document.write("<br>");
+    </script>
+    <h2>콜백 - 비동기 처리</h2>
+    <h3>순서대로 실행:동기적, 백그라운드로 실행:비동기적</h3>
+    <h3>메일 서비스에서 만명한테 보내는것이 3시간이 걸린다하면 이를 예약시스템으로 돌려서 백그라운드로 처리하면 비동기 처리라 함</h3>
+    <h3>Ajax: Asynchronous javascript and xml / 웹페이지에서 리로드하지 않고 서버에 필요한거만 요청하여 보여주는 기술</h3>
+    <script>
+        $.get('./datasource.json',
+            function (result) {
+                console.log(result);
+            }, 'json'); // 전달받은 주소로 get방식의 HTTP용청을 전송함
+    </script>
+</body>
+
+</html>
