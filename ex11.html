@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>클로저 - 내부함수가 외부함수의 context에 접근할 수 있는 것</h1>
+    <h2>내부함수</h2>
+    <script>
+        function outter() {
+            var title = 'coding everybody';
+
+            function inner() {
+                document.write(title);
+                document.write('<br>');
+            }
+            inner();
+        }
+        outter();
+    </script>
+    <h2>클로저 - 외부함수의 실행이 끝나서 소멸된 이후에도 내부함수가 외부함수의 변수에 접근 할 수 있다.</h2>
+    <script>
+        function outter() {
+            var title = 'coding everybody';
+            return function () {
+                document.write(title);
+                document.write('<br>');
+            }
+        }
+        var inner = outter();
+        inner();
+    </script>
+    <h2>클로저 특징: 외부함수가 소멸되면서 외부함수에서 선언된 변수는 내부함수들만 접근할 수 있게 된다.(private 변수처럼 사용가능)</h2>
+    <script>
+        function factory_movie(title) {
+            return {
+                get_title: function () {
+                    return title;
+                },
+                set_title: function (_title) {
+                    title = _title
+                }
+            }
+        }
+        var ghost = factory_movie('Ghost in the shell');
+        var matrix = factory_movie('Matrix');
+
+        document.write(ghost.get_title());
+        document.write('<br>');
+        document.write(matrix.get_title());
+        document.write('<br>');
+
+        ghost.set_title('공각기동대');
+
+        document.write(ghost.get_title());
+        document.write('<br>');
+        document.write(matrix.get_title());
+        document.write('<br>');
+    </script>
+    <h2>클로저를 사용하면서 발생할 수 있는 실수</h2>
+    <script>
+        var arr = []
+        for (var i = 0; i < 5; i++) {
+            arr[i] = function () {
+                return i;
+            }
+        }
+        for (var index in arr) {
+            document.write(arr[index]());
+            document.write('<br>');
+        }
+
+        var arr = []
+        for (var i = 0; i < 5; i++) {
+            arr[i] = function (id) {
+                return function () {
+                    return id;
+                }
+            }(i);
+        }
+        for (var index in arr) {
+            document.write(arr[index]());
+            document.write('<br>');
+        }
+    </script>
+</body>
+
+</html>
