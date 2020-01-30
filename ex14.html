@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>생성자와 new</h1>
+    <h2>객체 {변수, 메소드} </h2>
+    <script>
+        var person = {};
+        person.name = 'egoing';
+        person.introduce = function () {
+            return 'My name is ' + this.name;
+        }
+        document.write(person.introduce());
+        document.write('<br>');
+
+        var person = {
+            'name': 'egoing',
+            'introduce': function () {
+                return 'My name is ' + this.name;
+            }
+        }
+        document.write(person.introduce());
+        document.write('<br>');
+    </script>
+    <h2>생성자:객체를 만드는 역할을 하는 함수, 코드 재사용을 위해</h2>
+    <script>
+        function Person(name) {
+            this.name = name;
+            this.introduce = function () {
+                return 'My name is ' + this.name;
+            }
+        }
+        var p1 = new Person('egoing');
+        document.write(p1.introduce() + "<br />");
+
+        var p2 = new Person('leezche');
+        document.write(p2.introduce() + "<br />");
+    </script>
+</body>
+
+</html>
