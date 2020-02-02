@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Object</h1>
+    <h2>Object prototype은 모든 객체의 부모이다.</h2>
+    <script>
+        var arr = ['a', 'b', 'c'];
+        //Object.keys()
+        document.write('Object.key(arr) ' + Object.keys(arr) + '<br>');
+
+        //Object.prototype.toString()
+        var o = new Object();
+        document.write('o.toString() ' + o.toString() + '<br>');
+
+        var a = new Array(1, 2, 3);
+        document.write('a.toString() ' + a.toString() + '<br>');
+    </script>
+    <h2>Object 확장</h2>
+    <script>
+        Object.prototype.contain = function (neddle) {
+            for (var name in this) {
+                if (this[name] === neddle) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        var o = {
+            'name': 'egoing',
+            'city': 'seoul'
+        }
+        console.log(o.contain('egoing')); // Object.prototype.contain();
+        var a = ['egoing', 'leezche', 'grapittie'];
+        console.log(a.contain('leezche')); // Array.prototype.contain();
+    </script>
+    <h2>Object 확장의 위험</h2>
+    <script>
+        for (var name in o) {
+            document.write(o[name] + '<br>');
+        }
+        for (var name in a) {
+            document.write(a[name] + '<br>');
+        }
+        for (var name in o) {
+            if (o.hasOwnProperty(name))
+                document.write(o[name] + '<br>');
+        }
+    </script>
+</body>
+
+</html>
