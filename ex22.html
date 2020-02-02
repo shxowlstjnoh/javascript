@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>원시데이터 타입은 복제가 일어난다. 나머지는 참조가 된다</h1>
+    <h2>복제</h2>
+    <script>
+        var a = 1;
+        var b = a; // 복제, 원시데이터 타입은 복제가 일어난다.
+        b = 2;
+        document.write(a + '<br>'); // 1
+    </script>
+    <h2>참조</h2>
+    <script>
+        var a = {
+            'id': 1
+        };
+        var b = a; // 참조
+        b.id = 2;
+        document.write(a.id + '<br>'); // 2
+        b = {
+            'id': 4
+        }; // 객체 생성
+        document.write(a.id + '<br>'); // 2
+        
+    </script>
+    <h2>함수</h2>
+    <script>
+        var a = 1;
+
+        function func(b) { // b = a (복제)
+            b = 2; // a에 영향을 주지 않음
+        }
+        func(a);
+        document.write(a + '<br>'); // 1
+
+        var a = {
+            'id': 1
+        };
+
+        function func(b) { // b = a 
+            b = {
+                'id': 2
+            }; // b를 새로운 객체로 대체
+        }
+        func(a);
+        document.write(a.id + '<br>'); // 1
+    </script>
+    <script>
+        // 한번에 두 개의 코드 스니펫을 작성하면
+        // 함수의 경우 아래의 있는 함수에 위의 함수가 덮어쓰기(무시)되면서
+        // func 호출 시 아래에 있는 함수만 두 번이 호출되기 때문입니다.
+        var a = {
+            'id': 1
+        };
+
+        function func(b) { // b = a
+            b.id = 2; // 참조
+        }
+        func(a);
+        document.write(a.id + '<br>'); // 2
+    </script>
+</body>
+
+</html>
