@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>this</h1>
+    <h2>함수호출 - this는 함수 내에서 함수 호출 맥락(context)를 의미.<br>맥락이라는 것은 상황에 따라서
+        달라진다는 의미로 함수를 어떻게 호출하느냐에 따라 this 대상이 달라진다.</h2>
+    <script>
+        function func() {
+            if (window === this) {
+                document.write("window === this" + '<br>');
+            }
+        }
+        func();
+    </script>
+    <h2>메소드의 호출</h2>
+    <script>
+        var o = {
+            func: function () {
+                if (o === this) {
+                    document.write("o === this" + '<br>');
+                }
+            }
+        }
+        o.func();
+    </script>
+    <h2>생성자와 this<br>
+        생성자로 호출한 this는 생성된 객체를 가리키고 함수로 호출한 this는 전역객체를 가리킨다.</h2>
+    <script>
+        var funcThis = null;
+
+        function Func() {
+            funcThis = this;
+        }
+        var o1 = Func();
+        if (funcThis === window) {
+            document.write('window <br />');
+        }
+
+        var o2 = new Func();
+        if (funcThis === o2) {
+            document.write('o2 <br />');
+        }
+
+        function Func1() {
+            document.write(o + '<br>');
+        }
+        var o = new Func1();
+    </script>
+    <h2>apply, call</h2>
+    <h3>함수도 객체이기 때문에 객체와 함수는 대등한 관걔이다. 하지만 apply,call로 인해 객체와 메소드의 관계(master, slave)처럼 소속이 변경될 수 있다.</h3>
+    <script>
+        var o = {}
+        var p = {}
+
+        function func() {
+            switch (this) {
+                case o:
+                    document.write('o<br />');
+                    break;
+                case p:
+                    document.write('p<br />');
+                    break;
+                case window:
+                    document.write('window<br />');
+                    break;
+            }
+        }
+        func();
+        func.apply(o);
+        func.apply(p);
+    </script>
+    <h2>요약: this는 함수가 누구의 소속이냐에 따라서 this는 소속 객체를 따른다.</h2>
+</body>
+
+</html>
