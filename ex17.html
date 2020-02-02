@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>상속</h1>
+    <h2>상속을 하기 위해 prototype을 이용</h2>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.name = null;
+        Person.prototype.introduce = function () {
+            return 'My nickname is ' + this.name;
+        }
+
+        function Programmer(name) {
+            this.name = name;
+        }
+        Programmer.prototype = new Person();
+        Programmer.prototype.coding = function() {
+            return "hello world";
+        }
+        
+        function Desinger(name) {
+            this.name = name;
+        }
+        Desinger.prototype = new Person();
+        Desinger.prototype.design = function() {
+            return "beautiful";
+        }
+        var p1 = new Programmer('egoing');
+        document.write(p1.introduce() + "<br />");
+        document.write(p1.coding() +"<br>");
+
+        var p2 = new Desinger('ted');
+        document.write(p2.introduce() + "<br />");
+        document.write(p2.design() +"<br>");
+        document.coding(p2.design() +"<br>");
+    </script>
+</body>
+
+</html>
